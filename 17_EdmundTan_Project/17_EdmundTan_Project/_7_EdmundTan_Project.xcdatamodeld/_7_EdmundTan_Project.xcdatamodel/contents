@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Cart" representedClassName="Cart" syncable="YES" codeGenerationType="class">
-        <attribute name="productCatID" optional="YES"/>
-        <attribute name="productDesc" optional="YES"/>
-        <attribute name="productID" optional="YES"/>
-        <attribute name="productImg" optional="YES"/>
-        <attribute name="productName" optional="YES"/>
-        <attribute name="productPrice" optional="YES"/>
-        <attribute name="userName" optional="YES"/>
+        <attribute name="prodAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="productCatID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="productDesc" optional="YES" attributeType="String"/>
+        <attribute name="productID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="productImg" optional="YES" attributeType="String"/>
+        <attribute name="productName" optional="YES" attributeType="String"/>
+        <attribute name="productPrice" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Categories" representedClassName="Categories" syncable="YES" codeGenerationType="class">
         <attribute name="categoryDescription" optional="YES" attributeType="String"/>
@@ -16,6 +17,7 @@
         <attribute name="categoryName" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Products" representedClassName="Products" syncable="YES" codeGenerationType="class">
+        <attribute name="productAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="productCategoryID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="productDescription" optional="YES" attributeType="String"/>
         <attribute name="productID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -29,9 +31,9 @@
         <attribute name="userPassword" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Cart" positionX="-54" positionY="45" width="128" height="134"/>
+        <element name="Cart" positionX="-54" positionY="45" width="128" height="149"/>
         <element name="Categories" positionX="-54" positionY="54" width="128" height="89"/>
-        <element name="Products" positionX="-63" positionY="9" width="128" height="119"/>
+        <element name="Products" positionX="-63" positionY="9" width="128" height="134"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="74"/>
     </elements>
 </model>

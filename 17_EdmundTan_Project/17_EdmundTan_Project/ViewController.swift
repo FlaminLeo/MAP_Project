@@ -19,7 +19,11 @@ class ViewController: UIViewController {
     
     @IBAction func loginBtn(_ sender: Any) {
         if usernameField.text == "" || passwordField.text == "" {
+            let alert = UIAlertController(title: "Error", message: "Please fill in all fields", preferredStyle: UIAlertController.Style.alert)
             
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            
+            self.present(alert, animated: true)
         }else {
             login(Username: usernameField.text!, Password: passwordField.text!)
         }
@@ -40,7 +44,11 @@ class ViewController: UIViewController {
             if !allUser.isEmpty {
                 performSegue(withIdentifier: "toWelcome", sender: nil)
             }else {
+                let alert = UIAlertController(title: "Error", message: "User does not exist", preferredStyle: UIAlertController.Style.alert)
                 
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                
+                self.present(alert, animated: true)
             }
         }catch{
             print(error)

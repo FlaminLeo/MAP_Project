@@ -80,7 +80,9 @@ func retrieveProducts(ID: Int16) -> [Products] {
     let fetchRequest: NSFetchRequest<Products> = Products.fetchRequest()
     
     let predicate = NSPredicate(format: "productCategoryID = '" + String(ID) + "'")
-    var idProducts:[Products]
+    
+    fetchRequest.predicate = predicate
+    var idProducts:[Products]!
     
     do {
         idProducts = try viewContext.fetch(fetchRequest)

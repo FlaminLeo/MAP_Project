@@ -11,6 +11,7 @@ import UIKit
 class CategoryTableViewController: UITableViewController {
 
     var categories: [Categories]!
+    var catID = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,18 +38,32 @@ class CategoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "catCell", for: indexPath) as! CategoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellCat", for: indexPath) as! CategoryTableViewCell
         
         cell.catImg.image = UIImage(named: categories[indexPath.row].categoryImage ?? "")
         cell.catName.text = categories[indexPath.row].categoryName
         cell.catDesc.text = categories[indexPath.row].categoryDescription
         
+        catID = indexPath.row
+        
+        performSegue(withIdentifier: "toProducts", sender: nil)
         // Configure the cell...
 
         return cell
+
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "toProduct" {
+            let productCategory = segue.destination as! ProductTableViewController
+            productCategory.categoryID = categories[catID].categoryID
+            productCategory.catTitle = categories[catID].categoryName ?? ""
+            
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -89,10 +104,5 @@ class CategoryTableViewController: UITableViewController {
 
     //In a storyboard-based application, you will often want to do a little preparation before navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
-//  
 
 }
