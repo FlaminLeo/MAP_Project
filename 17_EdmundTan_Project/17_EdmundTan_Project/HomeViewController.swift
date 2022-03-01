@@ -10,7 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    
+    var user = String()
+    var retrievedUser: User!
     @IBOutlet weak var creditsLbl: UILabel!
     @IBOutlet weak var imageCarousell: UIImageView!
     @IBOutlet weak var catOne: UIImageView!
@@ -80,6 +81,11 @@ class HomeViewController: UIViewController {
         view.addGestureRecognizer(leftSwipe)
         
         imageCarousell.image = UIImage(named: carouselImg[carouselCounter])
+        
+        retrievedUser = retrieveWelcome(Username: user)
+        
+        creditsLbl.text = String(retrievedUser.credits)
+        
         // Do any additional setup after loading the view.
     }
     

@@ -17,6 +17,8 @@ class CategoryTableViewController: UITableViewController {
         super.viewDidLoad()
         
         categories = retrieveCategory()
+        tableView.dataSource = self
+        tableView.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,25 +45,31 @@ class CategoryTableViewController: UITableViewController {
         cell.catImg.image = UIImage(named: categories[indexPath.row].categoryImage ?? "")
         cell.catName.text = categories[indexPath.row].categoryName
         cell.catDesc.text = categories[indexPath.row].categoryDescription
+    
         
-        catID = indexPath.row
-        
-        performSegue(withIdentifier: "toProducts", sender: nil)
         // Configure the cell...
 
         return cell
 
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        catID = indexPath.row
+        performSegue(withIdentifier: "toProducts", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "toProduct" {
+        if segue.identifier == "toProducts" {
             let productCategory = segue.destination as! ProductTableViewController
             productCategory.categoryID = categories[catID].categoryID
             productCategory.catTitle = categories[catID].categoryName ?? ""
             
         }
+    }
+    
+    @IBAction func unwindtoCategories( _ seg: UIStoryboardSegue) {
     }
     
     /*

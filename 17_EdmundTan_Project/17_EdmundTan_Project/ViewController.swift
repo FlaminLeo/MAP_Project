@@ -55,6 +55,10 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func unwindtoLogin( _ seg: UIStoryboardSegue) {
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toWelcome" {
             let userDetail = segue.destination as! WelcomeViewController

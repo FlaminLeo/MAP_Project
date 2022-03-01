@@ -14,7 +14,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var creditsLbl: UILabel!
     var userName: String = ""
     var retrievedUser:User!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         retrievedUser = retrieveWelcome(Username: userName)
@@ -24,10 +24,19 @@ class WelcomeViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline:.now() + 2.0, execute: {
            self.performSegue(withIdentifier:"toHomePage",sender: self)
         })
-                // Do any additional setup after loading the view.
+        
+
+        // Do any additional setup after loading the view.
     }
     
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "toHomePage" {
+               let userInfo = segue.destination as! HomeViewController
+               userInfo.user = userName
+           }
+       }
+    
     /*
     // MARK: - Navigation
 

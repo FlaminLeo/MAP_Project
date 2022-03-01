@@ -18,7 +18,8 @@ class ProductTableViewController: UITableViewController {
         super.viewDidLoad()
 
         products = retrieveProducts(ID: categoryID)
-        
+        print(categoryID)
+        print(catTitle)
         self.title = catTitle
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -52,7 +53,8 @@ class ProductTableViewController: UITableViewController {
         return cell
     }
 
-
+    @IBAction func unwindtoProducts( _ seg: UIStoryboardSegue) {
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
